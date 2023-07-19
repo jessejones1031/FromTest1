@@ -1,0 +1,22 @@
+<script>
+    function submitForm() {
+        var formData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            dob: document.getElementById("dob").value,
+            isConfirmed: document.getElementById("isConfirmed").checked ? "on" : "off"
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://script.google.com/macros/s/AKfycbzanjf73KT2MDkH56yb3ygG88r5YqIMZNvKMCssELVPoMXn8nsg2EuOgrwN_yu7tzE/exec", true); // Replace "your_google_apps_script_id" with your actual Apps Script ID
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert("Form submitted successfully!");
+                document.getElementById("registrationForm").reset();
+            }
+        };
+        xhr.send(JSON.stringify(formData));
+    }
+</script>
